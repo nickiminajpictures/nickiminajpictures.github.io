@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+const posts = await Astro.glob('../posts/*.md')
+const name = 'Nicki Minaj Sexy Pics';
+---
+
+<Layout title={name} description="this is my desc">
+
+    <h1>{name}</h1>
+    <div id="image-container">
+    </div>
+
+    <h2>Nicki Minaj Sexy Pics</h2>
+
+    <p>Nicki Minaj, whose real name is Onika Tanya Maraj, is a Trinidadian-American rapper, singer, and songwriter. Born on December 8, 1982, in Saint James, Port of Spain, Trinidad and Tobago, she later moved to Queens, New York, in the United States.</p>
+
+    <p>Nicki Minaj gained widespread attention and popularity with her mixtapes released between 2007 and 2009. She signed with Young Money Entertainment in 2009 and released her debut album, "Pink Friday," in 2010, which went on to be a massive success.</p>
+
+    <h2>Key Points:</h2>
+    <ul>
+        <li><strong>Distinctive Style</strong>: Nicki is known for her colorful and diverse personas and her unique style of rapping, which often includes the use of alter egos and accents.</li>
+        <li><strong>Hits</strong>: Some of her hit songs include "Super Bass," "Anaconda," "Starships," and "Bang Bang."</li>
+        <li><strong>Awards</strong>: Over her career, she has received numerous awards and nominations and is considered one of the best-selling female rap artists of all time.</li>
+        <li><strong>Other Ventures</strong>: Apart from her music career, Minaj has taken on acting roles, has been a judge on the television show "American Idol," and has engaged in various business ventures, including her line of fragrances.</li>
+        <li><strong>Advocacy</strong>: Minaj has been outspoken on issues like education and has used her platform to address various social issues.</li>
+    </ul>
+
+    <p>She has made a significant impact on the music industry and is known for breaking barriers in the predominantly male world of rap music.</p>
+
+
+</Layout>
+
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
+
+
+<script>
+
+    // set the subreddit name
+const subreddit = 'Nicki_Minaj';
+
+    // fetch the JSON data for the subreddit
+fetch(`https://www.reddit.com/r/${subreddit}/.json`).then(response => response.json()).then(json => {
+
+    console.log(json)
+    // json console.log happi. You get all the listing.data.children.
+    // what does filter do?
+    const imagePosts = json.data.children.filter(post => {
+    const postUrl = post.data.url;
+
+
+    // until here: all the img urls from one different subreddit
+    // console.log(postUrl)
+
+    // check if the post URL ends in a common image file extension
+      return postUrl.endsWith('.jpg') || postUrl.endsWith('.jpeg') || postUrl.endsWith('.png') || postUrl.endsWith('.gif');
+    });
+
+    // extract the image URLs from the image posts
+    const imageUrls = imagePosts.map(post => post.data.url);
+
+    // display the images on the page
+    const imageContainer = document.querySelector('#image-container');
+    imageUrls.forEach(url => {
+      const img = document.createElement('img');
+      img.src = url;
+      img.classList.add("images_nicki");
+      imageContainer.appendChild(img);
+    });
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+
+
+      // fetch the JSON data for the subreddit
+      fetch(`https://www.reddit.com/r/aww/.json`)
+  .then(response => response.json())
+  .then(json => {
+    console.log(json.data.children[0].data.url);
+  }); // This is where the semicolon should be
+
+</script>
+
+

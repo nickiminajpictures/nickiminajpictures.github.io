@@ -8,9 +8,21 @@ const name = 'Nicki Minaj Sexy Pics';
 
     <h1>{name}</h1>
 
+    <div class="wrapper">
     <p>Hello, and welcome to <a href="/">Nicki Minaj Sexy Pics</a>, we're an fansite for Nicki Minaj, focusing on showign some of hew most sexy pics.
     American rapper and artist Nicki Minaj is one of Instagram’s sexiest women. To check it out, just take a look at the photos she shares daily on her social networks. It’s no secret that Nicki Minaj loves to wear outfits that highlight her enviable measures and arouse forbidden passions among her followers around the world. In our gallery we present a series of Nicki Minaj Sexy Pictures, where we see Nicki more casual than ever. Don’t miss her!</p>
+    </div>
+
     <div id="image-container">
+    </div>
+
+    <br>
+
+    <div id="image-container">
+      <img class="images_nicki" src="/images/nicki_minaj_sexy_pics_1.jpg" alt="nicki minaj sexy pics">
+      <img class="images_nicki" src="/images/nicki_minaj_sexy_pics_2.jpg" alt="nicki minaj sexy pics 2">
+      <img class="images_nicki" src="/images/nicki_minaj_sexy_pics_3.jpg" alt="nicki minaj sexy pics 3">
+      <img class="images_nicki" src="/images/nicki_minaj_sexy_pics_4.jpg" alt="nicki minaj sexy pics 4">
     </div>
 
     <div class="wrapper">
@@ -87,9 +99,15 @@ fetch(`https://www.reddit.com/r/${subreddit}/.json`).then(response => response.j
 
     // display the images on the page
     const imageContainer = document.querySelector('#image-container');
+
+    let counter = 1;
+
+
     imageUrls.forEach(url => {
       const img = document.createElement('img');
       img.src = url;
+      img.alt = `Nicki Minaj Sexy Pics ${counter}`
+      counter++; // Increment the counter
       img.classList.add("images_nicki");
       imageContainer.appendChild(img);
     });

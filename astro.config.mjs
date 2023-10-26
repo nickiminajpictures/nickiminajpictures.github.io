@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-    site: 'https://nickiminajsexypics.github.io',
+    site: 'https://nickiminajpictures.github.io',
   })
